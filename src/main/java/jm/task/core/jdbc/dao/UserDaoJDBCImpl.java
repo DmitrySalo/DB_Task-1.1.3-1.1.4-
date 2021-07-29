@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    private static UserDao userDaoJDBCImpl;
+    private static UserDao userDao;
 
-    public static UserDao getUserDaoJDBCImpl() {
-        if (userDaoJDBCImpl == null) {
-            userDaoJDBCImpl = new UserDaoJDBCImpl();
+    public static UserDao getUserDao() {
+        if (userDao == null) {
+            userDao = new UserDaoJDBCImpl();
         }
-        return userDaoJDBCImpl;
+        return userDao;
     }
 
     private UserDaoJDBCImpl() {
