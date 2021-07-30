@@ -94,7 +94,6 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException ignore) {
 
         }
-
         return list;
     }
 
