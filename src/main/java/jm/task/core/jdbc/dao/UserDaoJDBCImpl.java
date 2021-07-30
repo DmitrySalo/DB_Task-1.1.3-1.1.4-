@@ -25,7 +25,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void createUsersTable() {
         try (PreparedStatement statement = Util.getConnection()
                 .prepareStatement(
-                               "CREATE TABLE users ("
+                               "CREATE TABLE IF NOT EXISTS users ("
                                  + "id bigint NOT NULL AUTO_INCREMENT,"
                                  + " name varchar(40),"
                                  + " lastName varchar(40),"
@@ -39,7 +39,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
         try (PreparedStatement statement = Util.getConnection()
-                .prepareStatement("DROP TABLE users;")) {
+                .prepareStatement("DROP TABLE IF EXISTS users;")) {
 
             statement.executeUpdate();
         } catch (SQLException ignore) {
@@ -49,7 +49,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void saveUser(String name, String lastName, byte age) {
         try (PreparedStatement statement = Util.getConnection()
-                .prepareStatement("INSERT INTO users (name, lastName, age) VALUES (?, ?, ?);")) {
+                .prepareStatement("INSERT INTO users (name, lastName, age) VALUES (?, ?, ?) ;")) {
 
             statement.setString(1, name);
             statement.setString(2, lastName);
